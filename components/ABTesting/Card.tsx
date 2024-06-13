@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import styles from "./Card.module.css";
+import { Statsig } from "statsig-react";
 
 // Type the component
 const Card: React.FC<CardProps> = ({
@@ -26,7 +27,19 @@ const Card: React.FC<CardProps> = ({
   }
 
   return (
-    <div className={`${styles.card} ${hoverClass}`}>
+    <div
+      className={`${styles.card} ${hoverClass}`}
+      onMouseEnter={() => {
+        Statsig.logEvent(
+          "card_hover", // Name
+          19.99, // Price
+          {
+            title,
+            description,
+          }
+        );
+      }}
+    >
       <p>{title}</p>
       <p>{description}</p>
       <div className={styles.imageContainer}>

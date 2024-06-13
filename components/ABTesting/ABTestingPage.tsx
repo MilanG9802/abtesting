@@ -1,11 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 import Card from "./Card";
-import { dispatch } from "@/store";
+import { RootState, dispatch } from "@/store";
 import { setLoaded } from "@/store/reducer/loading";
 import { StatsigProvider } from "statsig-react";
+import { useSelector } from "react-redux";
 
 export default function ABTestingPage({ posts }: { posts: Card[] }) {
+  const { loaded } = useSelector((state: RootState) => state.loadingLayout);
+
   const [abGroup, setAbGroup] = useState<string | null>("null");
   const [userID, setUserID] = useState<number>(0);
 
@@ -20,14 +23,16 @@ export default function ABTestingPage({ posts }: { posts: Card[] }) {
       .find((row) => row.startsWith("userID="))
       ?.split("=")[1];
     setUserID(user ? parseInt(user) : 0);
+
     dispatch(setLoaded(true));
   }, []);
 
-  return (
+  return loaded ? (
     <StatsigProvider
       sdkKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!}
       waitForInitialization={true}
       user={{ userID }}
+      // shutdownOnUnmount
     >
       <div>
         {abGroup === "even" ? (
@@ -49,5 +54,7 @@ export default function ABTestingPage({ posts }: { posts: Card[] }) {
         )}
       </div>
     </StatsigProvider>
+  ) : (
+    <Card title="" description="" image="" loading />
   );
 }

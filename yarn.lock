@@ -135,6 +135,18 @@
   resolved "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.10.3.tgz"
   integrity sha512-qC/xYId4NMebE6w/V33Fh9gWxLgURiNYgVNObbJl2LZv0GUUItCcCqC5axQSwRaAgaxl2mELq1rMzlswaQ0Zxg==
 
+"@statsig/client-core@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/@statsig/client-core/-/client-core-1.2.0.tgz"
+  integrity sha512-KYkwEHF4u4qf80IsKd9/OelrPHHL1ZbofNBMU3oukKObHm5B9qhr4lKPttjIHFbmPeUNRIqBR10D+q2+yDZN7w==
+
+"@statsig/react-bindings@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/@statsig/react-bindings/-/react-bindings-1.2.0.tgz"
+  integrity sha512-Tw0jPoZM1I20rkm9BsuQ4XguKm8u0txP19JOFmQ1ILVvEBspU08sODCvHzltzAo5PCpxUcaQPG9U6ZzJnjYpBA==
+  dependencies:
+    "@statsig/client-core" "1.2.0"
+
 "@swc/counter@^0.1.3":
   version "0.1.3"
   resolved "https://registry.npmjs.org/@swc/counter/-/counter-0.1.3.tgz"
