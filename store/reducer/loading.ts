@@ -2,22 +2,22 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface SessionState {
-  loading: Boolean;
+  loaded: Boolean;
 }
 
 const initialState: SessionState = {
-  loading: false,
+  loaded: false,
 };
 
 const layoutLoading = createSlice({
-  name: "loading",
+  name: "loaded",
   initialState,
   reducers: {
-    setLoading: (state, action: PayloadAction<Boolean>) => {
-      state.loading = action.payload;
+    setLoaded: (state, action: PayloadAction<Boolean>) => {
+      state.loaded = action.payload;
     },
   },
 });
 
-export const { setLoading } = layoutLoading.actions;
+export const { setLoaded } = layoutLoading.actions;
 export default layoutLoading.reducer;

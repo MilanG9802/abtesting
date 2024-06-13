@@ -1,0 +1,10 @@
+.footer {
+  background: #a0a0a0;
+  width: 100%;
+  text-align: center;
+  padding: 2rem;
+}
+.footerload {
+  background: #fff;
+  color: red;
+}

@@ -1,19 +1,24 @@
 "use client";
 import { RootState, dispatch } from "@/store";
-import { setLoading } from "@/store/reducer/loading";
+import { setLoaded } from "@/store/reducer/loading";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import styles from "./footer.module.css";
 
 const Footer = () => {
-  const { loading } = useSelector((state: RootState) => state.loadingLayout);
+  const { loaded } = useSelector((state: RootState) => state.loadingLayout);
 
   useEffect(() => {
     setTimeout(() => {
-      dispatch(setLoading(true));
+      dispatch(setLoaded(true));
     }, 3000);
   }, []);
 
-  return <div>{loading ? "Loaded Successfully" : "Loading...."}</div>;
+  return (
+    <div className={`${styles.footer} ${loaded ? "" : styles.footerload}`}>
+      {loaded ? "Loaded Successfully" : "Loading...."}
+    </div>
+  );
 };
 
 export default Footer;
