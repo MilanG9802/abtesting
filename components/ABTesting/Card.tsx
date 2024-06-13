@@ -1,6 +1,6 @@
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
-import styles from "./Card.module.css";
+import React from "react";
+import styles from "./card.module.css";
 import { Statsig } from "statsig-react";
 
 // Type the component
