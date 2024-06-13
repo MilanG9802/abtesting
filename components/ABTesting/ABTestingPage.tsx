@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import Card from "./Card";
+import { dispatch } from "@/store";
+import { setLoaded } from "@/store/reducer/loading";
 
 export default function ABTestingPage() {
   const [abGroup, setAbGroup] = useState<string | null>("null");
@@ -11,11 +13,12 @@ export default function ABTestingPage() {
       .find((row) => row.startsWith("ab_test_group="))
       ?.split("=")[1];
     setAbGroup(group || null);
+    dispatch(setLoaded(true));
   }, []);
 
-  if (abGroup === null) {
-    return null;
-  }
+  // if (abGroup === null) {
+  //   return null;
+  // }
 
   return (
     <div>
@@ -34,7 +37,7 @@ export default function ABTestingPage() {
           color="grey"
         />
       ) : (
-        ""
+        <Card title="" description="" image="" loading />
       )}
     </div>
   );

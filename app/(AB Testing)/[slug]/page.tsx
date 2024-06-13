@@ -12,7 +12,7 @@ const DynamicABTestingPage: React.FC<DynamicABTestingPageProps> = ({
 }) => {
   return (
     <div>
-      DynamicABTestingPage : {params?.slug}
+      {/* DynamicABTestingPage : {params?.slug} */}
       <div>
         <ABTestingPage />
       </div>
