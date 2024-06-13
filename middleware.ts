@@ -15,6 +15,6 @@ export function middleware(request: NextRequest) {
     });
     UserID++;
   }
-  console.log(UserID);
+  // console.log(UserID);
   return response;
 }
