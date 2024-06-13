@@ -4,7 +4,7 @@ import Card from "./Card";
 import { dispatch } from "@/store";
 import { setLoaded } from "@/store/reducer/loading";
 
-export default function ABTestingPage() {
+export default function ABTestingPage({ posts }: { posts: Card[] }) {
   const [abGroup, setAbGroup] = useState<string | null>("null");
 
   useEffect(() => {
@@ -16,24 +16,20 @@ export default function ABTestingPage() {
     dispatch(setLoaded(true));
   }, []);
 
-  // if (abGroup === null) {
-  //   return null;
-  // }
-
   return (
     <div>
       {abGroup === "even" ? (
         <Card
-          title="Welcome to Group A"
-          description="This is the content for even-numbered users."
-          image="https://cdn.britannica.com/37/154237-050-A76A506D/blue-peafowl-tail-Indian-peacock-courtship-displays.jpg"
+          title={posts?.[0]?.title}
+          description={posts?.[0]?.description}
+          image={posts?.[0]?.thumbnail?.url}
           color="black"
         />
       ) : abGroup === "odd" ? (
         <Card
-          title="Welcome to Group B"
-          description="This is the content for odd-numbered users."
-          image="https://t3.ftcdn.net/jpg/05/56/88/18/360_F_556881864_T6KNWit9nKkRcgo7543KQQDJfIDvtocG.jpg"
+          title={posts?.[1]?.title}
+          description={posts?.[1]?.description}
+          image={posts?.[1]?.thumbnail?.url}
           color="grey"
         />
       ) : (
