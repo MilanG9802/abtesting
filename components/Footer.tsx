@@ -2,7 +2,7 @@
 import { RootState } from "@/store";
 import React from "react";
 import { useSelector } from "react-redux";
-import styles from "./footer.module.css";
+import styles from "./component.module.css";
 
 const Footer = () => {
   const { loaded } = useSelector((state: RootState) => state.loadingLayout);

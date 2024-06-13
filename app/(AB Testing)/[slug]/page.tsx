@@ -1,6 +1,9 @@
 import { fetchByPageSlug, fetchPages } from "@/app/action";
 import ABTestingPage from "@/components/ABTesting/ABTestingPage";
-import { notFound, redirect } from "next/navigation";
+import Header from "@/components/Header";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import styles from "@/app/page.module.css";
 import React from "react";
 
 const DynamicABTestingPage: React.FC<DynamicABTestingPageProps> = async ({
@@ -13,9 +16,17 @@ const DynamicABTestingPage: React.FC<DynamicABTestingPageProps> = async ({
   }
 
   return (
-    <div>
-      <ABTestingPage posts={data?.[0]?.cardsCollection?.items} />
-    </div>
+    <>
+      <Header title={data[0]?.title} />
+      {/* <div>
+        <p className={styles.description}>
+          <Link href={"/"}> Home</Link>
+        </p>
+      </div> */}
+      <div>
+        <ABTestingPage posts={data?.[0]?.cardsCollection?.items} />
+      </div>
+    </>
   );
 };
 
